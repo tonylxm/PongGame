@@ -12,4 +12,13 @@ wn.bgcolor("black")
 wn.setup(width = 800, height = 600)
 wn.tracer(0)    # Stops window from updating -> manually update -> faster game
 
+# Create paddles
+paddle_a = PongObject(0, "white", (-350, 0), 5, 1)
+paddle_b = PongObject(0, "white", (350, 0), 5, 1)
 
+# Create ball
+ball = PongObject(0, "white", (0, 0), 1, 1)
+
+# Main game loop
+while True:
+    wn.update() # Manually update window
