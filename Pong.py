@@ -5,6 +5,7 @@
 # Pong Game
 import turtle
 from PongObject import PongObject, Screen
+import winsound
 
 # Create window
 wn = Screen()
@@ -55,13 +56,16 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        winsound.PlaySound("beep.mp3", winsound.SND_ASYNC)
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+        winsound.PlaySound("beep.mp3", winsound.SND_ASYNC)
 
     if ball.xcor() > 390:
         ball.goto(0, 0)
+        ball.dx = 0.15
         ball.dx *= -1
         score_a += 1
         pen.clear()
@@ -69,6 +73,7 @@ while True:
     
     if ball.xcor() < -390:
         ball.goto(0, 0)
+        ball.dx = 0.15
         ball.dx *= -1
         score_b +=1
         pen.clear()
@@ -77,8 +82,10 @@ while True:
     # Paddle and ball collisions
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
         ball.setx(340)
-        ball.dx *= -1
+        ball.dx *= -1.1
+        winsound.PlaySound("beep.mp3", winsound.SND_ASYNC)
     
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
         ball.setx(-340)
-        ball.dx *= -1
+        ball.dx *= -1.1
+        winsound.PlaySound("beep.mp3", winsound.SND_ASYNC)
